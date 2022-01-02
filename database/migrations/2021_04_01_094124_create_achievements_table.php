@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateAchievementsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('achievements', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('by')->nullable();
+            $table->date('date')->nullable();
+            $table->LongText('content')->nullable();
+            $table->string('image')->nullable();
+            $table->tinyInteger('status')->default(1);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('achievements');
+    }
+}
